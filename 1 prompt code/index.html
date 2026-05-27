@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkySpark Weather</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="weather-bg" id="weatherBg"></div>
+
+  <header>
+    <h1>🌤️ SkySpark Weather</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#weather">Weather</a>
+      <a href="#forecast">Forecast</a>
+      <a href="#community">Community</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>Check the weather in any city</h2>
+    <p>Search live weather, view forecasts, earn badges, and share your weather observations.</p>
+    <a href="#weather" class="btn">Start Checking</a>
+  </section>
+
+  <section id="weather" class="card">
+    <h2>🔎 Weather Search</h2>
+    <div class="search-box">
+      <input id="cityInput" type="text" placeholder="Enter city name..." />
+      <button onclick="getWeather()">Search</button>
+    </div>
+
+    <div id="weatherResult" class="weather-result">
+      <p>Search for a city to see the weather.</p>
+    </div>
+  </section>
+
+  <section id="forecast" class="card">
+    <h2>📅 7-Day Forecast</h2>
+    <div id="forecastResult" class="forecast-grid"></div>
+  </section>
+
+  <section class="card">
+    <h2>🏆 Weather Streaks & Badges</h2>
+    <p>Daily Checks: <strong id="streakCount">0</strong></p>
+    <div id="badges" class="badges"></div>
+  </section>
+
+  <section id="community" class="card">
+    <h2>💬 Community Weather Board</h2>
+    <p>Share what the weather feels like near you.</p>
+
+    <textarea id="communityInput" placeholder="Example: It feels windy and cool today!"></textarea>
+    <button onclick="addPost()">Post Observation</button>
+
+    <div id="posts" class="posts"></div>
+  </section>
+
+  <footer>
+    <p>Made with HTML, CSS, JavaScript, JSON, and Open-Meteo API.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

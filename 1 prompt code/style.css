@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  color: #1f2937;
+  background: linear-gradient(135deg, #a7f3d0, #bfdbfe, #fde68a);
+  overflow-x: hidden;
+}
+
+.weather-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+header {
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(15px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  color: #ef4444;
+}
+
+nav a {
+  margin-left: 18px;
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.hero {
+  min-height: 75vh;
+  padding: 80px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 52px;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.hero p {
+  font-size: 20px;
+  margin: 20px auto;
+  max-width: 750px;
+  color: #ffffff;
+}
+
+.btn,
+button {
+  border: none;
+  background: linear-gradient(135deg, #fb7185, #f97316);
+  color: white;
+  padding: 13px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.35);
+  transition: 0.25s;
+}
+
+button:hover,
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.card {
+  width: 85%;
+  margin: 35px auto;
+  padding: 30px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+  margin-bottom: 18px;
+  color: #0f766e;
+}
+
+.search-box {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #bae6fd;
+  border-radius: 18px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-box input {
+  flex: 1;
+}
+
+.weather-result {
+  margin-top: 25px;
+  padding: 25px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ffffff, #e0f2fe);
+}
+
+.weather-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.temp {
+  font-size: 60px;
+  color: #f97316;
+  font-weight: bold;
+}
+
+.detail-box {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.7);
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
+}
+
+.forecast-day {
+  padding: 20px;
+  text-align: center;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #dbeafe, #fef3c7);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.badge {
+  background: linear-gradient(135deg, #facc15, #fb7185);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+textarea {
+  min-height: 100px;
+  margin-bottom: 12px;
+}
+
+.post {
+  background: #ecfeff;
+  padding: 15px;
+  margin-top: 12px;
+  border-left: 6px solid #06b6d4;
+  border-radius: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: white;
+}
+
+/* Animated weather backgrounds */
+.sunny::before {
+  content: "☀️";
+  position: fixed;
+  top: 90px;
+  right: 80px;
+  font-size: 130px;
+  animation: float 4s infinite alternate;
+}
+
+.cloudy::before {
+  content: "☁️ ☁️ ☁️";
+  position: fixed;
+  top: 120px;
+  left: -250px;
+  font-size: 80px;
+  animation: clouds 15s linear infinite;
+}
+
+.rainy::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    120deg,
+    rgba(59,130,246,0.3) 0px,
+    rgba(59,130,246,0.3) 2px,
+    transparent 2px,
+    transparent 16px
+  );
+  animation: rain 0.5s linear infinite;
+}
+
+.snowy::before {
+  content: "❄️ ❄️ ❄️ ❄️ ❄️ ❄️ ❄️";
+  position: fixed;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  font-size: 35px;
+  animation: snow 7s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(25px) rotate(12deg); }
+}
+
+@keyframes clouds {
+  from { transform: translateX(-250px); }
+  to { transform: translateX(120vw); }
+}
+
+@keyframes rain {
+  from { background-position: 0 0; }
+  to { background-position: 0 40px; }
+}
+
+@keyframes snow {
+  from { transform: translateY(-80px); }
+  to { transform: translateY(110vh); }
+}
+
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero h2 {
+    font-size: 36px;
+  }
+
+  .weather-main {
+    grid-template-columns: 1fr;
+  }
+}
